@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Messenger</string>
+
+    <!-- Auth Screens -->
+    <string name="login">Вход</string>
+    <string name="register">Регистрация</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="password_confirm">Подтверждение пароля</string>
+    <string name="username">Имя пользователя</string>
+    <string name="button_login">Войти</string>
+    <string name="button_register">Зарегистрироваться</string>
+    <string name="button_logout">Выход</string>
+    <string name="have_account">Уже есть аккаунт?</string>
+    <string name="no_account">Нет аккаунта?</string>
+    <string name="passwords_not_match">Пароли не совпадают</string>
+    <string name="invalid_email">Неверный email</string>
+    <string name="password_too_short">Пароль должен быть не менее 6 символов</string>
+    <string name="username_too_short">Имя должно быть не менее 3 символов</string>
+    <string name="registration_error">Ошибка регистрации</string>
+    <string name="login_error">Ошибка входа</string>
+
+    <!-- Chat Screen -->
+    <string name="send_message">Написать сообщение...</string>
+    <string name="send">Отправить</string>
+    <string name="attach_photo">Фото</string>
+    <string name="attach_video">Видео</string>
+    <string name="no_messages">Нет сообщений</string>
+    <string name="you">Вы</string>
+    <string name="select_user">Выберите пользователя</string>
+    <string name="users">Пользователи</string>
+    <string name="loading">Загрузка...</string>
+</resources>
