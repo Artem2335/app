@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme -->
+    <style name="Theme.Messenger" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/primary_gold</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorSecondary">@color/secondary_gray</item>
+        <item name="colorSecondaryVariant">@color/secondary_dark_brown</item>
+        <item name="android:colorBackground">@color/dark_bg</item>
+        <item name="android:colorForeground">@color/text_primary</item>
+        <item name="android:windowBackground">@color/dark_bg</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="Widget.Messenger.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="backgroundTint">@color/primary_gold</item>
+        <item name="android:paddingVertical">16dp</item>
+    </style>
+
+    <!-- EditText Style -->
+    <style name="Widget.Messenger.EditText" parent="Widget.MaterialComponents.TextInputEditText">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:paddingHorizontal">16dp</item>
+    </style>
+
+    <!-- TextInputLayout Style -->
+    <style name="Widget.Messenger.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/secondary_dark_brown</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="hintTextColor">@color/text_secondary</item>
+    </style>
+</resources>
