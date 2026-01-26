@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary_gold">#df9f1f</color>
+    <color name="primary_light_gold">#eecd8a</color>
+    <color name="primary_dark">#1c1404</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary_gray">#848483</color>
+    <color name="secondary_light_gray">#adacab</color>
+    <color name="secondary_dark_brown">#503c32</color>
+
+    <!-- Additional Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="dark_bg">#0a0a0a</color>
+    <color name="surface">#1a1a1a</color>
+    <color name="surface_light">#2d2d2d</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#adacab</color>
+    <color name="divider">#503c32</color>
+    <color name="error">#ff6b6b</color>
+    <color name="success">#51cf66</color>
+</resources>
