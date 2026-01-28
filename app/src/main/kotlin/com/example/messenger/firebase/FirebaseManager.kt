@@ -4,13 +4,11 @@ import com.example.messenger.models.Message
 import com.example.messenger.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 
 class FirebaseManager {
     private val auth = FirebaseAuth.getInstance()
     private val database = FirebaseDatabase.getInstance().reference
-    private val storage = FirebaseStorage.getInstance().reference
 
     // Auth Methods
     suspend fun registerUser(
@@ -98,21 +96,6 @@ class FirebaseManager {
         }
         messages.sortBy { it.timestamp }
         Result.success(messages)
-    } catch (e: Exception) {
-        Result.failure(e)
-    }
-
-    // Upload Media
-    suspend fun uploadMedia(
-        userId: String,
-        fileName: String,
-        fileData: ByteArray,
-        mediaType: String
-    ): Result<String> = try {
-        val ref = storage.child("users").child(userId).child(mediaType).child(fileName)
-        ref.putBytes(fileData).await()
-        val downloadUrl = ref.downloadUrl.await().toString()
-        Result.success(downloadUrl)
     } catch (e: Exception) {
         Result.failure(e)
     }
