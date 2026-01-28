@@ -3,7 +3,6 @@ package com.example.messenger.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.messenger.R
 import com.example.messenger.databinding.ItemMessageBinding
 import com.example.messenger.models.Message
@@ -41,29 +40,10 @@ class MessageAdapter(private val currentUserId: String) :
 
             binding.apply {
                 senderName.text = message.senderName
+                textContent.text = message.content
 
-                when (message.mediaType) {
-                    "photo" -> {
-                        textContent.visibility = android.view.View.GONE
-                        mediaView.visibility = android.view.View.VISIBLE
-                        Glide.with(root.context)
-                            .load(message.mediaUrl)
-                            .into(mediaView)
-                    }
-                    "video" -> {
-                        textContent.visibility = android.view.View.GONE
-                        mediaView.visibility = android.view.View.VISIBLE
-                        Glide.with(root.context)
-                            .load(message.mediaUrl)
-                            .placeholder(R.drawable.ic_video_placeholder)
-                            .into(mediaView)
-                    }
-                    else -> {
-                        textContent.visibility = android.view.View.VISIBLE
-                        mediaView.visibility = android.view.View.GONE
-                        textContent.text = message.content
-                    }
-                }
+                // Hide media view - only show text
+                mediaView.visibility = android.view.View.GONE
 
                 // Set background color based on sender
                 if (isCurrentUser) {
