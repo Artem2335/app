@@ -84,34 +84,13 @@
                 android:layout_weight="1"
                 android:padding="8dp" />
 
-            <!-- Input Area -->
+            <!-- Input Area (Simplified - Only Text Input) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="8dp"
                 android:background="@color/surface_light">
-
-                <!-- Media Buttons -->
-                <Button
-                    android:id="@+id/photoButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:text="@string/attach_photo"
-                    android:textSize="10sp"
-                    android:background="@color/secondary_dark_brown"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginEnd="4dp" />
-
-                <Button
-                    android:id="@+id/videoButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:text="@string/attach_video"
-                    android:textSize="10sp"
-                    android:background="@color/secondary_dark_brown"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginEnd="4dp" />
 
                 <!-- Message Input -->
                 <com.google.android.material.textfield.TextInputEditText
