@@ -1,12 +1,9 @@
 package com.example.messenger.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,20 +24,6 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var usersAdapter: UsersAdapter
     private var currentUser: User? = null
     private var selectedUser: User? = null
-
-    private val photoPickerLauncher =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            if (uri != null) {
-                uploadAndSendMedia(uri, "photo")
-            }
-        }
-
-    private val videoPickerLauncher =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            if (uri != null) {
-                uploadAndSendMedia(uri, "video")
-            }
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,16 +78,6 @@ class ChatActivity : AppCompatActivity() {
             // Send message button
             sendButton.setOnClickListener {
                 sendTextMessage()
-            }
-
-            // Photo picker
-            photoButton.setOnClickListener {
-                photoPickerLauncher.launch("image/*")
-            }
-
-            // Video picker
-            videoButton.setOnClickListener {
-                videoPickerLauncher.launch("video/*")
             }
 
             // Logout button
@@ -175,50 +148,6 @@ class ChatActivity : AppCompatActivity() {
                 showError(error.message ?: "Failed to send message")
             }
             loadMessages()
-        }
-    }
-
-    private fun uploadAndSendMedia(uri: Uri, mediaType: String) {
-        val current = currentUser ?: return
-        val selected = selectedUser ?: return
-
-        lifecycleScope.launch {
-            try {
-                val inputStream = contentResolver.openInputStream(uri)
-                val fileData = inputStream?.readBytes() ?: return@launch
-                inputStream.close()
-
-                val fileName = "${System.currentTimeMillis()}_${mediaType}"
-                val result = firebaseManager.uploadMedia(
-                    current.uid,
-                    fileName,
-                    fileData,
-                    mediaType
-                )
-
-                result.onSuccess { mediaUrl ->
-                    val message = Message(
-                        senderId = current.uid,
-                        senderName = current.username,
-                        recipientId = selected.uid,
-                        content = "Sent a $mediaType",
-                        mediaUrl = mediaUrl,
-                        mediaType = mediaType
-                    )
-                    val sendResult = firebaseManager.sendMessage(message)
-                    sendResult.onSuccess {
-                        loadMessages()
-                    }
-                    sendResult.onFailure { error ->
-                        showError(error.message ?: "Failed to send media")
-                    }
-                }
-                result.onFailure { error ->
-                    showError(error.message ?: "Failed to upload media")
-                }
-            } catch (e: Exception) {
-                showError("Error: ${e.message}")
-            }
         }
     }
 
